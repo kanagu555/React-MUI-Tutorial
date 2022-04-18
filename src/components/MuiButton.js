@@ -1,9 +1,25 @@
-import React from 'react';
-import { Stack, Button, ButtonGroup } from '@mui/material';
+import React, {useState} from 'react';
+import {
+  Stack,
+  Button,
+  ButtonGroup,
+  ToggleButtonGroup,
+  ToggleButton,
+} from '@mui/material';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+import FormatBoldIcon from '@mui/icons-material/FormatBold';
+import FormatItalicIcon from '@mui/icons-material/FormatItalic';
+import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 
 const MuiButton = () => {
+
+  const [formats, setFormates] = useState([])
+  console.log(formats)
+  const handleFormatChange = (updatedFormates) => {
+    setFormates(updatedFormates)
+  }
+
   return (
     <Stack spacing={4}>
       <Stack spacing={2} direction="row">
@@ -56,11 +72,29 @@ const MuiButton = () => {
         </Button>
       </Stack>
       <Stack direction="row">
-        <ButtonGroup variant="contained" orientation="vertical" color="success" aria-label='alignment group button'>
+        <ButtonGroup
+          variant="contained"
+          orientation="vertical"
+          color="success"
+          aria-label="alignment group button"
+        >
           <Button>Left</Button>
           <Button>Center</Button>
           <Button>Right</Button>
         </ButtonGroup>
+      </Stack>
+      <Stack direction="row">
+        <ToggleButtonGroup aria-label="text formating" value={formats} onChange={handleFormatChange}>
+          <ToggleButton value="bold" aria-label="bold">
+            <FormatBoldIcon />
+          </ToggleButton>
+          <ToggleButton value="italic" aria-label="italic">
+            <FormatItalicIcon />
+          </ToggleButton>
+          <ToggleButton value="underlined" aria-label="underlined">
+            <FormatUnderlinedIcon />
+          </ToggleButton>
+        </ToggleButtonGroup>
       </Stack>
     </Stack>
   );

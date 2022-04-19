@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Stack,
   Button,
@@ -13,12 +13,11 @@ import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 
 const MuiButton = () => {
-
-  const [formats, setFormates] = useState([])
-  console.log(formats)
-  const handleFormatChange = (updatedFormates) => {
-    setFormates(updatedFormates)
-  }
+  const [formats, setFormates] = useState([]);
+  console.log({ formats });
+  const handleFormatChange = (_event, updatedFormats) => {
+    setFormates(updatedFormats);
+  };
 
   return (
     <Stack spacing={4}>
@@ -84,7 +83,15 @@ const MuiButton = () => {
         </ButtonGroup>
       </Stack>
       <Stack direction="row">
-        <ToggleButtonGroup aria-label="text formating" value={formats} onChange={handleFormatChange}>
+        <ToggleButtonGroup
+          aria-label="text formating"
+          value={formats}
+          onChange={handleFormatChange}
+          size="large"
+          color="success"
+          orientation="vertical"
+          exclusive
+        >
           <ToggleButton value="bold" aria-label="bold">
             <FormatBoldIcon />
           </ToggleButton>
